@@ -70,7 +70,7 @@
 
         #endregion
 
-        private Label label1;
-        private Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

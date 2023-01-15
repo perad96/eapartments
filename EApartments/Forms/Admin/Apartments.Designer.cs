@@ -142,13 +142,13 @@
 
         #endregion
 
-        private Panel panel1;
-        private Label label1;
-        private Button btnAllApartments;
-        private Button btnAddNewApartment;
-        private Button btnAllBuildings;
-        private Button btnAddNewBuilding;
-        private Panel panel2;
-        private Panel pnlMain;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAllApartments;
+        private System.Windows.Forms.Button btnAddNewApartment;
+        private System.Windows.Forms.Button btnAllBuildings;
+        private System.Windows.Forms.Button btnAddNewBuilding;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlMain;
     }
 }
