@@ -22,7 +22,7 @@ namespace EApartments.Forms.Admin
             if (this.pnlMain.Controls.Count > 0)
                 this.pnlMain.Controls.RemoveAt(0);
 
-            Form? f = Form as Form;
+            Form f = Form as Form;
             f.TopLevel = false;
             f.Dock = DockStyle.Fill;
             this.pnlMain.Controls.Add(f);
