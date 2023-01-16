@@ -13,7 +13,7 @@ namespace EApartments.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202301151408093_init"; }
+            get { return "202301161915041_init"; }
         }
         
         string IMigrationMetadata.Source
