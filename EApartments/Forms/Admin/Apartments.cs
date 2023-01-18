@@ -38,5 +38,15 @@ namespace EApartments.Forms.Admin
         {
             this.loadForm(new ApartmentsAddNew());
         }
+
+        private void btnAllBuildings_Click(object sender, EventArgs e)
+        {
+            this.loadForm(new BuildingAll());
+        }
+
+        private void btnAddNewBuilding_Click(object sender, EventArgs e)
+        {
+            // this.loadForm(new )
+        }
     }
 }
