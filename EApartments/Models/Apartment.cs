@@ -14,6 +14,6 @@ namespace EApartments.Models
         public int Floor { get; set; }
         public decimal RentPrice { get; set; }
         public decimal Deposit { get; set; }
-        public decimal Status { get; set; }
+        public string Status { get; set; }
     }
 }

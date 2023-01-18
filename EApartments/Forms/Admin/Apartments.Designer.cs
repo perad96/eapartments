@@ -31,9 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAllApartments = new System.Windows.Forms.Button();
-            this.btnAddNewApartment = new System.Windows.Forms.Button();
             this.btnAllBuildings = new System.Windows.Forms.Button();
-            this.btnAddNewBuilding = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -71,21 +69,10 @@
             this.btnAllApartments.UseVisualStyleBackColor = true;
             this.btnAllApartments.Click += new System.EventHandler(this.btnAllApartments_Click);
             // 
-            // btnAddNewApartment
-            // 
-            this.btnAddNewApartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAddNewApartment.Location = new System.Drawing.Point(171, 6);
-            this.btnAddNewApartment.Name = "btnAddNewApartment";
-            this.btnAddNewApartment.Size = new System.Drawing.Size(160, 31);
-            this.btnAddNewApartment.TabIndex = 3;
-            this.btnAddNewApartment.Text = "Add New Apartment";
-            this.btnAddNewApartment.UseVisualStyleBackColor = true;
-            this.btnAddNewApartment.Click += new System.EventHandler(this.btnAddNewApartment_Click);
-            // 
             // btnAllBuildings
             // 
             this.btnAllBuildings.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAllBuildings.Location = new System.Drawing.Point(337, 6);
+            this.btnAllBuildings.Location = new System.Drawing.Point(172, 6);
             this.btnAllBuildings.Name = "btnAllBuildings";
             this.btnAllBuildings.Size = new System.Drawing.Size(160, 31);
             this.btnAllBuildings.TabIndex = 4;
@@ -93,23 +80,10 @@
             this.btnAllBuildings.UseVisualStyleBackColor = true;
             this.btnAllBuildings.Click += new System.EventHandler(this.btnAllBuildings_Click);
             // 
-            // btnAddNewBuilding
-            // 
-            this.btnAddNewBuilding.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAddNewBuilding.Location = new System.Drawing.Point(504, 6);
-            this.btnAddNewBuilding.Name = "btnAddNewBuilding";
-            this.btnAddNewBuilding.Size = new System.Drawing.Size(160, 31);
-            this.btnAddNewBuilding.TabIndex = 5;
-            this.btnAddNewBuilding.Text = "Add New Building";
-            this.btnAddNewBuilding.UseVisualStyleBackColor = true;
-            this.btnAddNewBuilding.Click += new System.EventHandler(this.btnAddNewBuilding_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel2.Controls.Add(this.btnAllApartments);
-            this.panel2.Controls.Add(this.btnAddNewBuilding);
-            this.panel2.Controls.Add(this.btnAddNewApartment);
             this.panel2.Controls.Add(this.btnAllBuildings);
             this.panel2.Location = new System.Drawing.Point(0, 35);
             this.panel2.Name = "panel2";
@@ -147,9 +121,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAllApartments;
-        private System.Windows.Forms.Button btnAddNewApartment;
         private System.Windows.Forms.Button btnAllBuildings;
-        private System.Windows.Forms.Button btnAddNewBuilding;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel pnlMain;
     }
