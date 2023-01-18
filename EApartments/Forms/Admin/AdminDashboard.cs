@@ -61,6 +61,11 @@ namespace EApartments.Forms.Admin
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
+            this.loadForm(new Users());
+        }
+
+        private void btnSettings_Click_1(object sender, EventArgs e)
+        {
             this.loadForm(new Settings());
         }
     }

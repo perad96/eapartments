@@ -28,32 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.TblAll = new System.Windows.Forms.DataGridView();
+            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColFloor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColRentPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDeposite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.TblAll)).BeginInit();
             this.SuspendLayout();
             // 
-            // listView1
+            // TblAll
             // 
-            this.listView1.Location = new System.Drawing.Point(60, 187);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(434, 106);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.TblAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TblAll.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColId,
+            this.ColCode,
+            this.ColFloor,
+            this.ColRentPrice,
+            this.ColDeposite,
+            this.ColStatus});
+            this.TblAll.Location = new System.Drawing.Point(12, 80);
+            this.TblAll.Name = "TblAll";
+            this.TblAll.Size = new System.Drawing.Size(662, 210);
+            this.TblAll.TabIndex = 0;
+            // 
+            // ColId
+            // 
+            this.ColId.HeaderText = "ID";
+            this.ColId.Name = "ColId";
+            // 
+            // ColCode
+            // 
+            this.ColCode.HeaderText = "Apartment Code";
+            this.ColCode.Name = "ColCode";
+            // 
+            // ColFloor
+            // 
+            this.ColFloor.HeaderText = "Floor";
+            this.ColFloor.Name = "ColFloor";
+            // 
+            // ColRentPrice
+            // 
+            this.ColRentPrice.HeaderText = "Rent Price";
+            this.ColRentPrice.Name = "ColRentPrice";
+            // 
+            // ColDeposite
+            // 
+            this.ColDeposite.HeaderText = "Deposite";
+            this.ColDeposite.Name = "ColDeposite";
+            // 
+            // ColStatus
+            // 
+            this.ColStatus.HeaderText = "Status";
+            this.ColStatus.Name = "ColStatus";
             // 
             // ApartmentsAll
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(686, 390);
+            this.Controls.Add(this.TblAll);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ApartmentsAll";
             this.Text = "ApartmentsAll";
+            ((System.ComponentModel.ISupportInitialize)(this.TblAll)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.DataGridView TblAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColFloor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColRentPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColDeposite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColStatus;
     }
 }

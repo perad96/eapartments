@@ -46,15 +46,15 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 31);
+            this.panel1.Size = new System.Drawing.Size(686, 27);
             this.panel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(2, 6);
+            this.label1.Location = new System.Drawing.Point(2, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 19);
             this.label1.TabIndex = 0;
@@ -62,10 +62,10 @@
             // 
             // btnAllApartments
             // 
-            this.btnAllApartments.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAllApartments.Location = new System.Drawing.Point(6, 7);
+            this.btnAllApartments.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAllApartments.Location = new System.Drawing.Point(5, 6);
             this.btnAllApartments.Name = "btnAllApartments";
-            this.btnAllApartments.Size = new System.Drawing.Size(187, 36);
+            this.btnAllApartments.Size = new System.Drawing.Size(160, 31);
             this.btnAllApartments.TabIndex = 2;
             this.btnAllApartments.Text = "All Apartments";
             this.btnAllApartments.UseVisualStyleBackColor = true;
@@ -73,10 +73,10 @@
             // 
             // btnAddNewApartment
             // 
-            this.btnAddNewApartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddNewApartment.Location = new System.Drawing.Point(199, 7);
+            this.btnAddNewApartment.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAddNewApartment.Location = new System.Drawing.Point(171, 6);
             this.btnAddNewApartment.Name = "btnAddNewApartment";
-            this.btnAddNewApartment.Size = new System.Drawing.Size(187, 36);
+            this.btnAddNewApartment.Size = new System.Drawing.Size(160, 31);
             this.btnAddNewApartment.TabIndex = 3;
             this.btnAddNewApartment.Text = "Add New Apartment";
             this.btnAddNewApartment.UseVisualStyleBackColor = true;
@@ -84,23 +84,25 @@
             // 
             // btnAllBuildings
             // 
-            this.btnAllBuildings.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAllBuildings.Location = new System.Drawing.Point(393, 7);
+            this.btnAllBuildings.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAllBuildings.Location = new System.Drawing.Point(337, 6);
             this.btnAllBuildings.Name = "btnAllBuildings";
-            this.btnAllBuildings.Size = new System.Drawing.Size(187, 36);
+            this.btnAllBuildings.Size = new System.Drawing.Size(160, 31);
             this.btnAllBuildings.TabIndex = 4;
             this.btnAllBuildings.Text = "All Buildings";
             this.btnAllBuildings.UseVisualStyleBackColor = true;
+            this.btnAllBuildings.Click += new System.EventHandler(this.btnAllBuildings_Click);
             // 
             // btnAddNewBuilding
             // 
-            this.btnAddNewBuilding.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddNewBuilding.Location = new System.Drawing.Point(588, 7);
+            this.btnAddNewBuilding.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAddNewBuilding.Location = new System.Drawing.Point(504, 6);
             this.btnAddNewBuilding.Name = "btnAddNewBuilding";
-            this.btnAddNewBuilding.Size = new System.Drawing.Size(187, 36);
+            this.btnAddNewBuilding.Size = new System.Drawing.Size(160, 31);
             this.btnAddNewBuilding.TabIndex = 5;
             this.btnAddNewBuilding.Text = "Add New Building";
             this.btnAddNewBuilding.UseVisualStyleBackColor = true;
+            this.btnAddNewBuilding.Click += new System.EventHandler(this.btnAddNewBuilding_Click);
             // 
             // panel2
             // 
@@ -109,24 +111,24 @@
             this.panel2.Controls.Add(this.btnAddNewBuilding);
             this.panel2.Controls.Add(this.btnAddNewApartment);
             this.panel2.Controls.Add(this.btnAllBuildings);
-            this.panel2.Location = new System.Drawing.Point(0, 40);
+            this.panel2.Location = new System.Drawing.Point(0, 35);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 50);
+            this.panel2.Size = new System.Drawing.Size(671, 43);
             this.panel2.TabIndex = 6;
             // 
             // pnlMain
             // 
-            this.pnlMain.Location = new System.Drawing.Point(1, 100);
+            this.pnlMain.Location = new System.Drawing.Point(1, 87);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(799, 350);
+            this.pnlMain.Size = new System.Drawing.Size(670, 398);
             this.pnlMain.TabIndex = 7;
             // 
             // Apartments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(672, 486);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

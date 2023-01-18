@@ -1,7 +1,9 @@
 ﻿using EApartments.DB;
 using EApartments.Models;
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +11,20 @@ using System.Windows.Forms;
 
 namespace EApartments.Services
 {
-    public class OccupantService
+    public class ApartmentService
     {
         AppDbContext appDbContext = new AppDbContext();
 
-
-        public bool AddOccupant(Occupant occupant)
+        public List<Building> GetAllBuildings()
+        {
+            return this.appDbContext.Building.ToList();
+        }
+        
+        public bool AddBuilding(Building building)
         {
             try
             {
-                var result = this.appDbContext.Occupant.Add(occupant);
+                var result = this.appDbContext.Building.Add(building);
                 this.appDbContext.SaveChanges();
 
                 if (result != null)
@@ -33,21 +39,15 @@ namespace EApartments.Services
                 return false;
             }
         }
-
-        public bool UpdateOccupant(Occupant occupant)
+        
+        public bool UpdateBuilding(Building building)
         {
             try
             {
-                Occupant updateObj = this.appDbContext.Occupant.Where(obj => obj.Id == occupant.Id).FirstOrDefault();
-                updateObj.ChiefOccupantId = occupant.ChiefOccupantId;
-                updateObj.RelationshipToChiefOccupant = occupant.RelationshipToChiefOccupant;
-                updateObj.FirstName = occupant.FirstName;
-                updateObj.LastName = occupant.LastName;
-                updateObj.Address = occupant.Address;
-                updateObj.Nic = occupant.Nic;
-                updateObj.Email = occupant.Email;
-                updateObj.Phone = occupant.Phone;
-                updateObj.EmergencyContact = occupant.EmergencyContact;
+                Building updateObj = this.appDbContext.Building.Where(obj => obj.Id == building.Id).FirstOrDefault();
+                updateObj.Title = building.Title;
+                updateObj.Address = building.Address;
+                updateObj.Description = building.Description;
 
                 this.appDbContext.SaveChanges();
 
@@ -60,13 +60,13 @@ namespace EApartments.Services
             }
         }
 
-
-        public bool DeleteOccupant(Occupant occupant)
+        
+        public bool DeleteBuilding(Building building)
         {
             try
             {
-                this.appDbContext.Occupant.Attach(occupant);
-                var result = this.appDbContext.Occupant.Remove(occupant);
+                this.appDbContext.Building.Attach(building);
+                var result = this.appDbContext.Building.Remove(building);
                 this.appDbContext.SaveChanges();
 
                 if (result != null)
@@ -81,6 +81,5 @@ namespace EApartments.Services
                 return false;
             }
         }
-
     }
 }
