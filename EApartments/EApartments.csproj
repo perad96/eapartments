@@ -168,6 +168,12 @@
     <Compile Include="Forms\Admin\AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Admin\ApartmentAsign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\ApartmentAsign.Designer.cs">
+      <DependentUpon>ApartmentAsign.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Admin\Apartments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,12 @@
     </Compile>
     <Compile Include="Forms\Admin\BuildingUpdate.Designer.cs">
       <DependentUpon>BuildingUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\CustomerAddNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\CustomerAddNew.Designer.cs">
+      <DependentUpon>CustomerAddNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Admin\Customers.cs">
       <SubType>Form</SubType>
@@ -246,11 +258,53 @@
     <Compile Include="Forms\Admin\Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CustomerRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerRegister.Designer.cs">
+      <DependentUpon>CustomerRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerView\CustomerDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerView\CustomerDashboard.Designer.cs">
+      <DependentUpon>CustomerDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerView\CustomerPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerView\CustomerPayments.Designer.cs">
+      <DependentUpon>CustomerPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerView\CustomerSearchAppartments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerView\CustomerSearchAppartments.Designer.cs">
+      <DependentUpon>CustomerSearchAppartments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerView\RequestApartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerView\RequestApartment.Designer.cs">
+      <DependentUpon>RequestApartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GuestWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GuestWelcome.Designer.cs">
+      <DependentUpon>GuestWelcome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ManagerView\ManagerDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ManagerView\ManagerDashboard.Designer.cs">
+      <DependentUpon>ManagerDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202301161915041_init.cs" />
     <Compile Include="Migrations\202301161915041_init.designer.cs">
@@ -259,6 +313,10 @@
     <Compile Include="Migrations\202301181203126_change_status_col_on_apartments_table.cs" />
     <Compile Include="Migrations\202301181203126_change_status_col_on_apartments_table.designer.cs">
       <DependentUpon>202301181203126_change_status_col_on_apartments_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301181332487_modify_occupant_table.cs" />
+    <Compile Include="Migrations\202301181332487_modify_occupant_table.designer.cs">
+      <DependentUpon>202301181332487_modify_occupant_table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Apartment.cs" />
@@ -276,10 +334,14 @@
     <Compile Include="Services\ApartmentService.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\OccupantService.cs" />
+    <Compile Include="Services\PaymentService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\UtillService.cs" />
     <EmbeddedResource Include="Forms\Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\ApartmentAsign.resx">
+      <DependentUpon>ApartmentAsign.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\Apartments.resx">
       <DependentUpon>Apartments.cs</DependentUpon>
@@ -298,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\BuildingUpdate.resx">
       <DependentUpon>BuildingUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\CustomerAddNew.resx">
+      <DependentUpon>CustomerAddNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\Customers.resx">
       <DependentUpon>Customers.cs</DependentUpon>
@@ -320,14 +385,38 @@
     <EmbeddedResource Include="Forms\Admin\Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerRegister.resx">
+      <DependentUpon>CustomerRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerView\CustomerDashboard.resx">
+      <DependentUpon>CustomerDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerView\CustomerPayments.resx">
+      <DependentUpon>CustomerPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerView\CustomerSearchAppartments.resx">
+      <DependentUpon>CustomerSearchAppartments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerView\RequestApartment.resx">
+      <DependentUpon>RequestApartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GuestWelcome.resx">
+      <DependentUpon>GuestWelcome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ManagerView\ManagerDashboard.resx">
+      <DependentUpon>ManagerDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301161915041_init.resx">
       <DependentUpon>202301161915041_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301181203126_change_status_col_on_apartments_table.resx">
       <DependentUpon>202301181203126_change_status_col_on_apartments_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301181332487_modify_occupant_table.resx">
+      <DependentUpon>202301181332487_modify_occupant_table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

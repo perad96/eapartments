@@ -14,6 +14,19 @@ namespace EApartments.Services
         AppDbContext appDbContext = new AppDbContext();
 
 
+        /// <summary>
+        ///    Get all occupant
+        /// </summary>
+        public List<Occupant> GetAllOccupants()
+        {
+            return this.appDbContext.Occupant.ToList();
+        }
+
+
+        /// <summary>
+        ///    Add occupant
+        /// </summary>
+        /// <param name="occupant"></param>
         public bool AddOccupant(Occupant occupant)
         {
             try
@@ -34,6 +47,10 @@ namespace EApartments.Services
             }
         }
 
+        /// <summary>
+        ///    Update occupant
+        /// </summary>
+        /// <param name="occupant"></param>
         public bool UpdateOccupant(Occupant occupant)
         {
             try
@@ -61,6 +78,10 @@ namespace EApartments.Services
         }
 
 
+        /// <summary>
+        ///    Delete occupant
+        /// </summary>
+        /// <param name="occupant"></param>
         public bool DeleteOccupant(Occupant occupant)
         {
             try

@@ -35,11 +35,12 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.TblAll = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbBuilding = new System.Windows.Forms.ComboBox();
-            this.lblRole = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.cmbClass = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.cmbBuilding = new System.Windows.Forms.ComboBox();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.btnAssign = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TblAll)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +82,7 @@
             // 
             this.btnUpdateView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateView.ForeColor = System.Drawing.Color.Navy;
-            this.btnUpdateView.Location = new System.Drawing.Point(558, 364);
+            this.btnUpdateView.Location = new System.Drawing.Point(85, 364);
             this.btnUpdateView.Name = "btnUpdateView";
             this.btnUpdateView.Size = new System.Drawing.Size(110, 27);
             this.btnUpdateView.TabIndex = 9;
@@ -107,6 +108,7 @@
             this.TblAll.Name = "TblAll";
             this.TblAll.Size = new System.Drawing.Size(662, 213);
             this.TblAll.TabIndex = 7;
+            this.TblAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TblAll_CellContentClick);
             // 
             // groupBox1
             // 
@@ -122,25 +124,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search Form";
             // 
-            // cmbBuilding
+            // btnSearch
             // 
-            this.cmbBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBuilding.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBuilding.FormattingEnabled = true;
-            this.cmbBuilding.Location = new System.Drawing.Point(72, 20);
-            this.cmbBuilding.Name = "cmbBuilding";
-            this.cmbBuilding.Size = new System.Drawing.Size(197, 26);
-            this.cmbBuilding.TabIndex = 19;
-            // 
-            // lblRole
-            // 
-            this.lblRole.AutoSize = true;
-            this.lblRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRole.Location = new System.Drawing.Point(6, 25);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(63, 16);
-            this.lblRole.TabIndex = 18;
-            this.lblRole.Text = "Building";
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.Black;
+            this.btnSearch.Location = new System.Drawing.Point(543, 19);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(110, 27);
+            this.btnSearch.TabIndex = 14;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cmbClass
             // 
@@ -162,23 +156,44 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "Class";
             // 
-            // btnSearch
+            // cmbBuilding
             // 
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(543, 19);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(110, 27);
-            this.btnSearch.TabIndex = 14;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.cmbBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBuilding.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBuilding.FormattingEnabled = true;
+            this.cmbBuilding.Location = new System.Drawing.Point(72, 20);
+            this.cmbBuilding.Name = "cmbBuilding";
+            this.cmbBuilding.Size = new System.Drawing.Size(197, 26);
+            this.cmbBuilding.TabIndex = 19;
+            // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRole.Location = new System.Drawing.Point(6, 25);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(63, 16);
+            this.lblRole.TabIndex = 18;
+            this.lblRole.Text = "Building";
+            // 
+            // btnAssign
+            // 
+            this.btnAssign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAssign.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnAssign.Location = new System.Drawing.Point(498, 365);
+            this.btnAssign.Name = "btnAssign";
+            this.btnAssign.Size = new System.Drawing.Size(169, 27);
+            this.btnAssign.TabIndex = 14;
+            this.btnAssign.Text = "Assign To Customer";
+            this.btnAssign.UseVisualStyleBackColor = true;
+            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
             // ApartmentsAll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(670, 398);
+            this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -211,5 +226,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbBuilding;
         private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Button btnAssign;
     }
 }

@@ -47,5 +47,31 @@ namespace EApartments.Forms.Admin
             UsersAddNew add = new UsersAddNew();
             add.Show();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult = MessageBox.Show(
+                "Do you really want to delete?",
+                "Question",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (DialogResult == DialogResult.Yes)
+            {
+
+                
+            }
+        }
+
+        private void btnUpdateView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TblAll_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

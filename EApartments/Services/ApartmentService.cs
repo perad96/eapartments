@@ -17,11 +17,21 @@ namespace EApartments.Services
     {
         AppDbContext appDbContext = new AppDbContext();
 
+
+        /// <summary>
+        ///    Get all buildings
+        /// </summary>
         public List<Building> GetAllBuildings()
         {
             return this.appDbContext.Building.ToList();
         }
 
+
+        /// <summary>
+        ///    Get all appartments according to building and class (Category)
+        /// </summary>
+        /// <param name="buildingId"></param>
+        /// <param name="categoryId"></param>
         public IList GetAllApartmentsByBuildingAndClass(int buildingId, int categoryId)
         {
             var result = this.appDbContext.Apartment.Join(appDbContext.Building,
@@ -67,6 +77,63 @@ namespace EApartments.Services
             return result;
         }
 
+
+        /// <summary>
+        ///    Get all available appartments according to building and class (Category) for customer view
+        /// </summary>
+        /// <param name="buildingId"></param>
+        /// <param name="categoryId"></param>
+        public IList GetAllAvailableApartmentsByBuildingAndClass(int buildingId, int categoryId)
+        {
+            var result = this.appDbContext.Apartment.Join(appDbContext.Building,
+                apartment => apartment.BuildingId,
+                building => building.Id,
+                (apartment, building) => new {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    BuildingTitle = building.Title
+                })
+                .Join(appDbContext.ApartmentCategory,
+                apartment => apartment.CategoryId,
+                category => category.Id,
+                (apartment, category) => new {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    BuildingTitle = apartment.BuildingTitle,
+                    CategoryTitle = category.Title
+                })
+                .Where(r => r.BuildingId == buildingId)
+                .Where(r => r.CategoryId == categoryId)
+                .Where(r => r.Status == "AVAILABLE")
+                .Select(r => new
+                {
+                    r.Id,
+                    r.Code,
+                    r.RentPrice,
+                    r.Deposit,
+                    r.BuildingTitle,
+                    r.CategoryTitle,
+                    r.Status
+                }).ToList();
+
+            return result;
+        }
+
+
+        /// <summary>
+        ///    Add building
+        /// </summary>
+        /// <param name="building"></param>
         public bool AddBuilding(Building building)
         {
             try
@@ -86,7 +153,12 @@ namespace EApartments.Services
                 return false;
             }
         }
-        
+
+
+        /// <summary>
+        ///    Add appartment
+        /// </summary>
+        /// <param name="apartment"></param>
         public bool AddApartment(Apartment apartment)
         {
             try
@@ -106,7 +178,12 @@ namespace EApartments.Services
                 return false;
             }
         }
-        
+
+
+        /// <summary>
+        ///    Update building data
+        /// </summary>
+        /// <param name="building"></param>
         public bool UpdateBuilding(Building building)
         {
             try
@@ -126,7 +203,12 @@ namespace EApartments.Services
                 return false;
             }
         }
-        
+
+
+        /// <summary>
+        ///    Update appartment info
+        /// </summary>
+        /// <param name="apartment"></param>
         public bool UpdateApartment(Apartment apartment)
         {
             try
@@ -150,7 +232,11 @@ namespace EApartments.Services
             }
         }
 
-        
+
+        /// <summary>
+        ///    Delete building
+        /// </summary>
+        /// <param name="building"></param>
         public bool DeleteBuilding(Building building)
         {
             try

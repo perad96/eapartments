@@ -80,6 +80,7 @@
             this.btnUpdateView.TabIndex = 7;
             this.btnUpdateView.Text = "Update View";
             this.btnUpdateView.UseVisualStyleBackColor = true;
+            this.btnUpdateView.Click += new System.EventHandler(this.btnUpdateView_Click);
             // 
             // btnDelete
             // 
@@ -91,6 +92,7 @@
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // TblAll
             // 
@@ -100,6 +102,7 @@
             this.TblAll.Name = "TblAll";
             this.TblAll.Size = new System.Drawing.Size(661, 271);
             this.TblAll.TabIndex = 5;
+            this.TblAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TblAll_CellContentClick);
             // 
             // Users
             // 

@@ -17,6 +17,10 @@ namespace EApartments.Forms.Admin
             InitializeComponent();
         }
 
+        /// <summary>
+        ///    Common method for load forms.
+        /// </summary>
+        /// <param name="Form"></param>
         public void loadForm(object Form)
         {
             if (this.pnlMain.Controls.Count > 0)
@@ -39,16 +43,25 @@ namespace EApartments.Forms.Admin
             this.loadForm(new Welcome());
         }
 
+        /// <summary>
+        ///    Load appartments
+        /// </summary>
         private void btnApartments_Click(object sender, EventArgs e)
         {
             this.loadForm(new Apartments());
         }
 
+        /// <summary>
+        ///    Load welcome
+        /// </summary>
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             this.loadForm(new Welcome());
         }
 
+        /// <summary>
+        ///    Load occupants
+        /// </summary>
         private void btnCustomers_Click(object sender, EventArgs e)
         {
             this.loadForm(new Customers());

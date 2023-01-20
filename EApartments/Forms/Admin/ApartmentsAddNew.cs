@@ -66,22 +66,22 @@ namespace EApartments.Forms.Admin
         {
             try
             {
-                if (txtCode.Text == null)
+                if (txtCode.Text == "")
                 {
                     MessageBox.Show("Please enter code!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                if (txtFloor.Text == null || !Regex.IsMatch(txtFloor.Text, @"^\d+$"))
+                if (txtFloor.Text == "" || !Regex.IsMatch(txtFloor.Text, @"^\d+$"))
                 {
                     MessageBox.Show("Please enter valid floor!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                if (txtPrice.Text == null || !Regex.IsMatch(txtPrice.Text, @"^\d+$"))
+                if (txtPrice.Text == "" || !Regex.IsMatch(txtPrice.Text, @"^\d+$"))
                 {
                     MessageBox.Show("Please enter valid price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                if (txtDeposite.Text == null || !Regex.IsMatch(txtDeposite.Text, @"^\d+$"))
+                if (txtDeposite.Text == "" || !Regex.IsMatch(txtDeposite.Text, @"^\d+$"))
                 {
                     MessageBox.Show("Please enter valid deposite amount!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;

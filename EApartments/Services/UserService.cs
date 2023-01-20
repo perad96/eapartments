@@ -15,6 +15,10 @@ namespace EApartments.Services
     {
         AppDbContext appDbContext = new AppDbContext();
 
+
+        /// <summary>
+        ///    Get all users list
+        /// </summary>
         public IList All()
         {
             var result = this.appDbContext.User.Join(appDbContext.Role,
@@ -35,9 +39,13 @@ namespace EApartments.Services
                 }).ToList();
 
             return result;
-            // return this.appDbContext.User.ToList();
         }
 
+
+        /// <summary>
+        ///    Add new user
+        /// </summary>
+        /// <param name="user"></param>
         public bool Add(User user)
         {
             try
@@ -67,6 +75,11 @@ namespace EApartments.Services
             }
         }
 
+
+        /// <summary>
+        ///    Update user info 
+        /// </summary>
+        /// <param name="user"></param>
         public bool Update(User user)
         {
             try
@@ -90,6 +103,10 @@ namespace EApartments.Services
         }
 
 
+        /// <summary>
+        ///    Delete user
+        /// </summary>
+        /// <param name="user"></param>
         public bool Delete(User user)
         {
             try
@@ -112,6 +129,10 @@ namespace EApartments.Services
         }
 
 
+        /// <summary>
+        ///    Check is exist username
+        /// </summary>
+        /// <param name="user"></param>
         public bool IsExistUsername(User user)
         {
             try
@@ -132,6 +153,10 @@ namespace EApartments.Services
         }
 
 
+        /// <summary>
+        ///    Password hash
+        /// </summary>
+        /// <param name="password"></param>
         private string Md5Hash(string password)
         {
             return BitConverter.ToString(MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(password))).Replace("-", "");

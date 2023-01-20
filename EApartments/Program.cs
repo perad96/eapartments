@@ -1,5 +1,7 @@
 ﻿using EApartments.Forms;
 using EApartments.Forms.Admin;
+using EApartments.Forms.CustomerView;
+using EApartments.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +20,7 @@ namespace EApartments
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminDashboard());
-            // Application.Run(new Login());
+            Application.Run(new GuestWelcome());
         }
     }
 }
