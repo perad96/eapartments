@@ -128,6 +128,106 @@ namespace EApartments.Services
 
             return result;
         }
+        
+        /// <summary>
+        ///    Get all requested appartments
+        /// </summary>
+        public IList GetAllRequestedApartments()
+        {
+            var result = this.appDbContext.Lease
+                .Join(appDbContext.Apartment,
+                lease => lease.ApartmentId,
+                apartment => apartment.Id,
+                (lease, apartment) => new {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    LeaseId = lease.Id,
+                    OccupantId = lease.OccupantId,
+                    LeaseStatus = lease.Status
+                }).Join(appDbContext.Building,
+                apartment => apartment.BuildingId,
+                building => building.Id,
+                (apartment, building) => new {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    apartment.LeaseId,
+                    apartment.LeaseStatus,
+                    apartment.OccupantId,
+                    BuildingTitle = building.Title
+                }).Join(appDbContext.ApartmentCategory,
+                apartment => apartment.CategoryId,
+                category => category.Id,
+                (apartment, category) => new
+                {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    apartment.LeaseId,
+                    apartment.LeaseStatus,
+                    apartment.OccupantId,
+                    apartment.BuildingTitle,
+                    CategoryTitle = category.Title
+                }).Join(appDbContext.Occupant,
+                apartment => apartment.OccupantId,
+                occupant => occupant.Id,
+                (apartment, occupant) => new
+                {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    apartment.LeaseId,
+                    apartment.BuildingTitle,
+                    apartment.CategoryTitle,
+                    apartment.LeaseStatus,
+                    apartment.OccupantId,
+                    FirstName = occupant.FirstName,
+                    LastName = occupant.LastName,
+                    Nic = occupant.Nic,
+                    Email = occupant.Email,
+                    Address = occupant.Address,
+                })
+                .Where(r => r.LeaseStatus == "REQUESTED")
+                .Select(r => new
+                {
+                    r.Id,
+                    r.Code,
+                    r.RentPrice,
+                    r.Deposit,
+                    r.Status,
+                    r.BuildingId,
+                    r.CategoryId,
+                    r.LeaseId,
+                    r.LeaseStatus,
+                    r.BuildingTitle,
+                    r.CategoryTitle,
+                    r.OccupantId,
+                    r.FirstName,
+                    r.LastName,
+                    r.Nic,
+                    r.Email,
+                    r.Address,
+                }).ToList();
+
+            return result;
+        }
 
 
         /// <summary>

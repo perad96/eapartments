@@ -36,6 +36,8 @@
             this.lblRole = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TblAll = new System.Windows.Forms.DataGridView();
+            this.btnUpdateView = new System.Windows.Forms.Button();
+            this.btnAddPayment = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TblAll)).BeginInit();
@@ -90,8 +92,6 @@
             this.cmbBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBuilding.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBuilding.FormattingEnabled = true;
-            this.cmbBuilding.Items.AddRange(new object[] {
-            "Amal Perera"});
             this.cmbBuilding.Location = new System.Drawing.Point(89, 20);
             this.cmbBuilding.Name = "cmbBuilding";
             this.cmbBuilding.Size = new System.Drawing.Size(296, 26);
@@ -125,14 +125,40 @@
             this.TblAll.Name = "TblAll";
             this.TblAll.Size = new System.Drawing.Size(662, 263);
             this.TblAll.TabIndex = 15;
-            this.TblAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TblAll_CellContentClick);
+            this.TblAll.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TblAll_CellContentClick);
+            // 
+            // btnUpdateView
+            // 
+            this.btnUpdateView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateView.ForeColor = System.Drawing.Color.Navy;
+            this.btnUpdateView.Location = new System.Drawing.Point(556, 392);
+            this.btnUpdateView.Name = "btnUpdateView";
+            this.btnUpdateView.Size = new System.Drawing.Size(110, 27);
+            this.btnUpdateView.TabIndex = 22;
+            this.btnUpdateView.Text = "View";
+            this.btnUpdateView.UseVisualStyleBackColor = true;
+            this.btnUpdateView.Click += new System.EventHandler(this.btnUpdateView_Click);
+            // 
+            // btnAddPayment
+            // 
+            this.btnAddPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPayment.ForeColor = System.Drawing.Color.Green;
+            this.btnAddPayment.Location = new System.Drawing.Point(426, 392);
+            this.btnAddPayment.Name = "btnAddPayment";
+            this.btnAddPayment.Size = new System.Drawing.Size(124, 27);
+            this.btnAddPayment.TabIndex = 23;
+            this.btnAddPayment.Text = "Add Payment";
+            this.btnAddPayment.UseVisualStyleBackColor = true;
+            this.btnAddPayment.Click += new System.EventHandler(this.btnAddPayment_Click);
             // 
             // Payments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(670, 398);
+            this.ClientSize = new System.Drawing.Size(670, 451);
+            this.Controls.Add(this.btnAddPayment);
+            this.Controls.Add(this.btnUpdateView);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TblAll);
@@ -159,5 +185,7 @@
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView TblAll;
+        private System.Windows.Forms.Button btnUpdateView;
+        private System.Windows.Forms.Button btnAddPayment;
     }
 }

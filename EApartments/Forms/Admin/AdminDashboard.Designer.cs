@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnCustomers = new System.Windows.Forms.Button();
@@ -37,8 +38,8 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnRequestedList = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Controls.Add(this.btnRequestedList);
             this.panel1.Controls.Add(this.btnSettings);
             this.panel1.Controls.Add(this.btnUsers);
             this.panel1.Controls.Add(this.btnReports);
@@ -58,12 +60,25 @@
             this.panel1.Size = new System.Drawing.Size(171, 399);
             this.panel1.TabIndex = 3;
             // 
+            // btnSettings
+            // 
+            this.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.Location = new System.Drawing.Point(8, 243);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(154, 28);
+            this.btnSettings.TabIndex = 6;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click_1);
+            // 
             // btnUsers
             // 
             this.btnUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnUsers.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsers.Location = new System.Drawing.Point(8, 175);
+            this.btnUsers.Location = new System.Drawing.Point(8, 209);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Size = new System.Drawing.Size(154, 28);
             this.btnUsers.TabIndex = 5;
@@ -76,7 +91,7 @@
             this.btnReports.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnReports.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(8, 142);
+            this.btnReports.Location = new System.Drawing.Point(8, 176);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(154, 28);
             this.btnReports.TabIndex = 4;
@@ -89,7 +104,7 @@
             this.btnCustomers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCustomers.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCustomers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomers.Location = new System.Drawing.Point(8, 109);
+            this.btnCustomers.Location = new System.Drawing.Point(8, 143);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(154, 28);
             this.btnCustomers.TabIndex = 3;
@@ -154,6 +169,19 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Admin";
             // 
+            // btnRequestedList
+            // 
+            this.btnRequestedList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRequestedList.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRequestedList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequestedList.Location = new System.Drawing.Point(8, 110);
+            this.btnRequestedList.Name = "btnRequestedList";
+            this.btnRequestedList.Size = new System.Drawing.Size(154, 28);
+            this.btnRequestedList.TabIndex = 7;
+            this.btnRequestedList.Text = "Apartment Requests";
+            this.btnRequestedList.UseVisualStyleBackColor = true;
+            this.btnRequestedList.Click += new System.EventHandler(this.btnRequestedList_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EApartments.Properties.Resources.logo;
@@ -163,19 +191,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(8, 209);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(154, 28);
-            this.btnSettings.TabIndex = 6;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click_1);
             // 
             // AdminDashboard
             // 
@@ -210,5 +225,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnRequestedList;
     }
 }

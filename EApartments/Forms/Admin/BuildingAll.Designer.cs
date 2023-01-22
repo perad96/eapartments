@@ -45,7 +45,7 @@
             this.TblAll.Name = "TblAll";
             this.TblAll.Size = new System.Drawing.Size(662, 279);
             this.TblAll.TabIndex = 1;
-            this.TblAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TblAll_CellContentClick);
+            this.TblAll.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TblAll_CellContentClick);
             // 
             // btnDelete
             // 

@@ -81,5 +81,10 @@ namespace EApartments.Forms.Admin
         {
             this.loadForm(new Settings());
         }
+
+        private void btnRequestedList_Click(object sender, EventArgs e)
+        {
+            this.loadForm(new ApartmentRequests());
+        }
     }
 }

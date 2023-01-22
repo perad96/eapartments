@@ -150,7 +150,7 @@
             this.TblAll.Name = "TblAll";
             this.TblAll.Size = new System.Drawing.Size(662, 337);
             this.TblAll.TabIndex = 15;
-            this.TblAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TblAll_CellContentClick);
+            this.TblAll.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TblAll_CellClick);
             // 
             // btnRequest
             // 

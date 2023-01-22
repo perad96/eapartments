@@ -59,8 +59,9 @@
             this.btnApartments.Name = "btnApartments";
             this.btnApartments.Size = new System.Drawing.Size(154, 28);
             this.btnApartments.TabIndex = 2;
-            this.btnApartments.Text = "Apartments";
+            this.btnApartments.Text = "Apartment Requests";
             this.btnApartments.UseVisualStyleBackColor = true;
+            this.btnApartments.Click += new System.EventHandler(this.btnApartments_Click);
             // 
             // btnPayments
             // 
@@ -73,6 +74,7 @@
             this.btnPayments.TabIndex = 1;
             this.btnPayments.Text = "Payments";
             this.btnPayments.UseVisualStyleBackColor = true;
+            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
             // 
             // btnDashboard
             // 
@@ -124,6 +126,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Name = "ManagerDashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManagerDashboard";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

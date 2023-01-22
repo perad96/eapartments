@@ -68,8 +68,8 @@ namespace EApartments.Forms.CustomerView
             }
         }
 
-        private void TblAll_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void TblAll_CellClick(object sender, DataGridViewCellEventArgs e)
+        {   
             DataGridViewRow row = TblAll.Rows[e.RowIndex];
 
             this.apartment = new Apartment();
@@ -77,8 +77,9 @@ namespace EApartments.Forms.CustomerView
             this.apartment.Code = row.Cells["Code"].Value.ToString();
             this.apartment.RentPrice = (decimal)row.Cells["RentPrice"].Value;
             this.apartment.Deposit = (decimal)row.Cells["Deposit"].Value;
-            Console.WriteLine("Clicked");
         }
+
+
 
         private void btnInfo_Click(object sender, EventArgs e)
         {

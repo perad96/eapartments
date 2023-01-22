@@ -1,4 +1,5 @@
 ﻿using EApartments.DB;
+using EApartments.Forms.Admin;
 using EApartments.Models;
 using MySqlX.XDevAPI.Common;
 using System;
@@ -22,6 +23,112 @@ namespace EApartments.Services
         public List<Lease> GetAllLease()
         {
             return this.appDbContext.Lease.ToList();
+        }
+        
+        /// <summary>
+        ///    Get all by occupant
+        /// </summary>
+        /// <param name="occupantId"></param>
+        public IList GetAllByOccupant(int occupantId)
+        {
+            var result = this.appDbContext.Lease
+                .Join(appDbContext.Apartment,
+                lease => lease.ApartmentId,
+                apartment => apartment.Id,
+                (lease, apartment) => new {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    LeaseId = lease.Id,
+                    OccupantId = lease.OccupantId,
+                    LeaseStatus = lease.Status
+                }).Join(appDbContext.Building,
+                apartment => apartment.BuildingId,
+                building => building.Id,
+                (apartment, building) => new {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    apartment.LeaseId,
+                    apartment.LeaseStatus,
+                    apartment.OccupantId,
+                    BuildingTitle = building.Title
+                }).Join(appDbContext.ApartmentCategory,
+                apartment => apartment.CategoryId,
+                category => category.Id,
+                (apartment, category) => new
+                {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    apartment.LeaseId,
+                    apartment.LeaseStatus,
+                    apartment.OccupantId,
+                    apartment.BuildingTitle,
+                    CategoryTitle = category.Title
+                }).Join(appDbContext.Occupant,
+                apartment => apartment.OccupantId,
+                occupant => occupant.Id,
+                (apartment, occupant) => new
+                {
+                    apartment.Id,
+                    apartment.Code,
+                    apartment.RentPrice,
+                    apartment.Deposit,
+                    apartment.Status,
+                    apartment.BuildingId,
+                    apartment.CategoryId,
+                    apartment.LeaseId,
+                    apartment.BuildingTitle,
+                    apartment.CategoryTitle,
+                    apartment.LeaseStatus,
+                    apartment.OccupantId,
+                    FirstName = occupant.FirstName,
+                    LastName = occupant.LastName,
+                    Nic = occupant.Nic,
+                    Email = occupant.Email,
+                    Address = occupant.Address,
+                })
+                .Where(r => r.OccupantId == occupantId)
+                .Select(r => new
+                {
+                    r.Id,
+                    r.Code,
+                    r.LeaseId,
+                    r.LeaseStatus,
+                    r.BuildingTitle,
+                    r.CategoryTitle,
+                    r.OccupantId,
+                    r.FirstName,
+                    r.LastName,
+                    r.Nic,
+                    r.Email,
+                    r.Address,
+                }).ToList();
+
+            return result;
+        }
+        
+        /// <summary>
+        ///    Get all payment info by lease
+        /// </summary>
+        /// <param name="leaseId"></param>
+        public List<LeasePayment> GetAllPaymentInfoByLeaseId(int leaseId)
+        {
+            return this.appDbContext.LeasePayment.Where(obj => obj.LeaseId == leaseId).ToList();
+
         }
 
 
@@ -62,6 +169,47 @@ namespace EApartments.Services
                 return false;
             }
         }
+
+
+        /// <summary>
+        ///    Confirm appartment request and add make initial payment.
+        /// </summary>
+        /// <param name="lease"></param>
+        /// <param name="payment"></param>
+        public bool ConfirmApartmentRequest(Lease lease, LeasePayment payment)
+        {
+            var transaction = this.appDbContext.Database.BeginTransaction();
+            try
+            {
+                Lease searchedDataLease = this.appDbContext.Lease.Where(obj => obj.Id == lease.Id).FirstOrDefault();
+                searchedDataLease.Status = "CONFIRMED";
+                this.appDbContext.SaveChanges();
+
+                Apartment apartmentUpdate = this.appDbContext.Apartment.Where(obj => obj.Id == searchedDataLease.ApartmentId).FirstOrDefault();
+                apartmentUpdate.Status = "OCCUPIED";
+                this.appDbContext.SaveChanges();
+
+                payment.LeaseId = lease.Id;
+                var resultpayment = this.appDbContext.LeasePayment.Add(payment);
+                this.appDbContext.SaveChanges();
+                    
+                if (resultpayment != null)
+                {    
+                    transaction.Commit();
+                    return true;
+                }
+
+                transaction.Rollback();
+                MessageBox.Show("Something went wrong!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback(); 
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
         
         
         /// <summary>
@@ -72,6 +220,13 @@ namespace EApartments.Services
         {
             try
             {
+                Occupant occupant = this.appDbContext.Occupant.Where(obj => obj.UserId == lease.OccupantId).FirstOrDefault();
+                if(occupant == null) {
+                    MessageBox.Show("Invalid occupant!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
+                lease.OccupantId = occupant.Id;
                 var result = this.appDbContext.Lease.Add(lease);
                 this.appDbContext.SaveChanges();
 
@@ -99,6 +254,31 @@ namespace EApartments.Services
             try
             {
                 var result = this.appDbContext.Apartment.Add(apartment);
+                this.appDbContext.SaveChanges();
+
+                if (result != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        ///    Add payment
+        /// </summary>
+        /// <param name="payment"></param>
+        public bool AddPayment(LeasePayment payment)
+        {
+            try
+            {
+                var result = this.appDbContext.LeasePayment.Add(payment);
                 this.appDbContext.SaveChanges();
 
                 if (result != null)

@@ -11,38 +11,28 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EApartments.Forms.CustomerView
+namespace EApartments.Forms.Admin
 {
-    public partial class RequestApartment : Form
+    public partial class PaymentAdd : Form
     {
-
-        Apartment apartment;
         PaymentService _paymentService = new PaymentService();
-        OccupantService _occupantService = new OccupantService();
-        User authUser = new User();
+        Lease lease;
 
-        public RequestApartment(Apartment apartment, User authUser)
+        public PaymentAdd(Lease lease)
         {
+            this.lease = lease;
             InitializeComponent();
-            this.apartment = apartment;
-            this.authUser = authUser;
         }
 
         protected bool IsVaidForm()
         {
             try
             {
-                if (datePickerFrom.Text == "")
+                if (txtPaidAmount.Text == "" || !Regex.IsMatch(txtPaidAmount.Text, @"^\d+$"))
                 {
-                    MessageBox.Show("Please select from date!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Please enter valid amount!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                if (datePickerTo.Text == "")
-                {
-                    MessageBox.Show("Please select to date!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
-
                 return true;
             }
             catch (Exception ex)
@@ -52,25 +42,22 @@ namespace EApartments.Forms.CustomerView
             }
         }
 
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
                 if (this.IsVaidForm())
                 {
-                    Lease lease = new Lease();
-                    lease.ApartmentId = this.apartment.Id;
-                    lease.OccupantId = this.authUser.Id;
-                    lease.StartDate = DateTime.Parse(datePickerFrom.Text);
-                    lease.EndDate = DateTime.Parse(datePickerTo.Text);
-                    lease.Status = "REQUESTED";
+                    LeasePayment payment = new LeasePayment();
+                    payment.LeaseId = lease.Id;
+                    payment.Amount = decimal.Parse(txtPaidAmount.Text);
+                    payment.PaidAt = DateTime.Today;
 
-                    var result = this._paymentService.AddApartmentRequest(lease);
+                    var result = this._paymentService.AddPayment(payment);
 
                     if (result)
                     {
-                        MessageBox.Show("Appartment requested successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Payment added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
                     }
                 }
@@ -94,14 +81,6 @@ namespace EApartments.Forms.CustomerView
             {
                 this.Hide();
             }
-        }
-
-        private void RequestApartment_Load(object sender, EventArgs e)
-        {
-            txtCode.Text = this.apartment.Code;
-            txtDeposite.Text = this.apartment.Deposit + "";
-            txtFloor.Text = this.apartment.Floor + "";
-            txtRentPrice.Text = this.apartment.RentPrice + "";
         }
     }
 }

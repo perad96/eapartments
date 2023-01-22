@@ -21,6 +21,11 @@ namespace EApartments
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GuestWelcome());
+
+            //Application.Run(new AdminDashboard());
+
+            //User user = new User();
+            //Application.Run(new CustomerDashboard(user));
         }
     }
 }
